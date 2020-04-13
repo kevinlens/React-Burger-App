@@ -5,15 +5,15 @@ import Aux from '../../hoc/Auxiliary'
 
 class BurgerBuilder extends Component{
     render(){
-        return(){
+        return(
             //Aux Wrapper
             <Aux>
                 <div>
                     Burger
                 </div>
-                <div>Build Control</div>
+                <div>Build Controls</div>
             </Aux>
-        }
+        )
     }
 }
 

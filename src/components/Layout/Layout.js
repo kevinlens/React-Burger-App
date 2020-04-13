@@ -14,10 +14,7 @@ these all work EXACTLY the same.
 */
 import Aux from '../../hoc/Auxiliary'
 import React from 'react'
-
-
-
-
+import classes from './Layout.module.css'
 
 
 /*Using normal function component because it wont be dealing
@@ -30,7 +27,7 @@ const layout = (props) => (
             SideDrawer,
             Backdrop
         </div>
-        <main>
+        <main className={classes.Content}>
             {props.children}
         </main>
     </Aux>
