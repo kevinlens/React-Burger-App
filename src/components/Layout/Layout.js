@@ -14,11 +14,20 @@ these all work EXACTLY the same.
 */
 import Aux from '../../hoc/Auxiliary'
 import React from 'react'
+/*With the introduction of Create-React-App(CRA) 16.2(Version 2) 
+CSS Modules are now supported as a built-in-feature from the time
+you create the starting files. Meaning you no longer have to eject your
+React-Scripts(Don't ever do this as you lose your warranty) to be able
+to use CSS Modules. CSS Modules are a better way for you to work with
+CSS in a large group project without having to worry about having the
+same name classes and its interferences with each other, as it has a 
+scoping feature to it*/
 import classes from './Layout.module.css'
 
 
 /*Using normal function component because it wont be dealing
 with state*/
+//STATELESS 'layout' component
 const layout = (props) => (
     //Aux Wrapper
     <Aux>
@@ -44,5 +53,5 @@ wrapper around them and it would still work*/
 
 
 
-//Exporting the the component
+//Exporting the the STATELESS component
 export default layout;
