@@ -6,7 +6,6 @@ import classes from './Burger.module.css'
 
 //Import a STATELESS component from a burgerIngedient folder
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient'
-import burgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 //STATELESS 'burger' component aka (The Burger Itself)
 const burger = (props) => {
@@ -14,7 +13,7 @@ const burger = (props) => {
     /*turning the (STATE: ingredient OBJECT) into an ARRAY with
     Object.key.
     ---> ingredients: ["salad", "bacon", "cheese", "meat"] */
-    const transformedIngredients = Object.keys(props.ingredients)
+    let transformedIngredients = Object.keys(props.ingredients)
     /*for every item in "ingredients" igKey becomes that e.g 'salad'
     and that item STILL holds its value e.g salad: 1, meat: 2;
     console.log(igKey) //salad, bacon, cheese, meat, ect */
@@ -43,20 +42,62 @@ const burger = (props) => {
            
             /* [...Array(props.ingredients[igKey])] will result in 
             either 
-            [ undefined, undefined ] or [ undefined]
+            [ undefined, undefined ] 
+            or 
+            [ undefined]
+            or 
+            [] 
+            with no values at all,
+            as an array being stored inside ANOTHER array 
+            *
+            [[1st loop],[2nd loop],[3rd loop],[4th loop]]
+            *
             depending on the value of igKey e.g igKey of salad = 1 and meat = 2,
             if there are 2 meat, then 2 undefined values will be created in the array*/
             /*.Map() = For EVERY undefined value in the array, print out the 
             <BurgerIngredient> element. The '_' is there to serve as null bc you don't
             want to do anything with it, but the 'i' is so that you can have a unique key*/
-            return [...Array(props.ingredients[igKey])].map((_,i)=>{
-                /*The <BurgerIngredient> element amount printed will be related to
+            return [...Array(props.ingredients[igKey])]
+                .map((_,i)=>{
+                /*The <BurgerIngredient> element amount printed out will be related to
                 the LENGTH of the array with undefined values, e.g [ undefined, undefined ]
                 will result in printing 2 <BurgerIngredient> element.
                 */
+               /*An ELEMENT "<BurgerIngredient/>", is a plain OBJECT describing
+               its desired properties. */
+               /*After the entire array has been looped through it should look 
+               like this 
+                [[{…}], [{…}], [{…}], [{…}] ]
+                An array holding arrays with objects to describe the element to be
+                displayed to the DOM*/
                 return <BurgerIngredient key={igKey + i } type={igKey}/>
-            });
+                             });
         })
+        /*checking to see if the array returned, has arrays with values. In this case,
+        an object. In order to determine whether or not to print the message to the
+        user to start adding the ingredients. e.g [[],[],[],[]] which is has array
+        with arrays of nothing, no value*/
+        /* 'el' is going to be the already returned array from above,
+        for e.g [[{…}], [{…}], [{…}], [{…}] ] */
+        .reduce((arr,el)=>{
+
+            /*by contatenating it, it will result from [[{…}], [{…}], [{…}], [{…}] ] to
+            [ {…}, {…}, {…}, {…}, {…}, {…} ]*/
+            return arr.concat(el);
+            
+        /*the '[]' is the INITIAL value meaning 'arr' parameter is going to be 
+        the new empty [] array that will accumulate new values*/
+        },[]);
+
+        /*if the function expression length is 0, meaning the [[],[],[],[]] turns to
+        '[]' after 'arr.concat', rather than something like [[{…}], [{…}], [{…}], [{…}] ] to
+        [ {…}, {…}, {…}, {…}, {…}, {…} ],
+        then print out the paragraph element*/
+        if(transformedIngredients.length === 0){
+            transformedIngredients = <p>Please start adding ingredients</p>
+        }
+
+
 
     return(
 
