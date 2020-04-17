@@ -12,12 +12,28 @@ import burgerIngredient from './BurgerIngredient/BurgerIngredient';
 const burger = (props) => {
     
     /*turning the (STATE: ingredient OBJECT) into an ARRAY with
-    Object.key. Then for every INDEX(igKey) within the newly
-    created ARRAY, */
+    Object.key.
+    ---> ingredients: ["salad", "bacon", "cheese", "meat"] */
     const transformedIngredients = Object.keys(props.ingredients)
         .map(igKey =>{
+            // console.log(Array(2));
+            // console.log(...Array(2));
+
+            /*
+            Array("Saab","Volvo","BMW") and ["Saab","Volvo","BMW"]
+            are the same resulting in:
+            Array(3) [ "Saab", "Volvo", "BMW" ]
+            however, passing in a single element such as
+            Array(2) is completely different
+            */
+           
+            // console.log(...Array(props.ingredients[igKey]));
+
+            /*Array() is a method taking in an argument, i has the 
+            functionality of an array*/
+            
             return [...Array(props.ingredients[igKey])].map((_,i)=>{
-                <BurgerIngredient key={igKey + 1 } type={igKey}/>
+                return <BurgerIngredient key={igKey + i } type={igKey}/>
             });
         })
 
@@ -28,8 +44,7 @@ const burger = (props) => {
         not possible with <Aux> or hoc*/
         <div className={classes.Burger}>
             <BurgerIngredient type="bread-top" />
-            <BurgerIngredient type="cheese" />
-            <BurgerIngredient type="meat" />
+            {transformedIngredients}
             <BurgerIngredient type="bread-bottom" />
         </div>
 
