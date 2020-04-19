@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import classes from './BurgerIngredient.module.css';
 
 
-//STATELESS 'burgerIngredient' component aka (The ingredients)
+//STATELESS functional 'burgerIngredient' component aka (The ingredients)
 const burgerIngredient =  (props) => {
 
     let ingredient = null;

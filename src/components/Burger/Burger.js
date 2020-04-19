@@ -7,7 +7,7 @@ import classes from './Burger.module.css'
 //Import a STATELESS component from a burgerIngedient folder
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient'
 
-//STATELESS 'burger' component aka (The Burger Itself)
+//STATELESS functional 'burger' component aka (The Burger Itself)
 const burger = (props) => {
     
     /*turning the (STATE: ingredient OBJECT) into an ARRAY with
@@ -77,8 +77,10 @@ const burger = (props) => {
         an object. In order to determine whether or not to print the message to the
         user to start adding the ingredients. e.g [[],[],[],[]] which is has array
         with arrays of nothing, no value*/
-        /* 'el' is going to be the already returned array from above,
+        /* 'el' is going to be the 'already returned array' from above,
         for e.g [[{…}], [{…}], [{…}], [{…}] ] */
+        /*The reduce() method executes a reducer function (that you provide)
+         e.g: reduce(accumulator, currentValue)*/
         .reduce((arr,el)=>{
 
             /*by contatenating it, it will result from [[{…}], [{…}], [{…}], [{…}] ] to
