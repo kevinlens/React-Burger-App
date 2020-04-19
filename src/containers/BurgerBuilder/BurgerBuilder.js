@@ -6,6 +6,9 @@ import Aux from '../../hoc/Auxiliary'
 //Importing STATELESS burger component from component file
 import Burger from '../../components/Burger/Burger'
 
+//Importing STATELESS controls component from component file
+import BuildControls from '../../components/Burger/BuildControls/BuildControls'
+
 //STATEFUL class component aka(The Entire Burger Application)
 class BurgerBuilder extends Component{
     //State aka burger DATA for manipulation
@@ -26,7 +29,7 @@ class BurgerBuilder extends Component{
                 {/* the manipulator of the DOM for the burger picture itself */}
                 <Burger ingredients={this.state.ingredients}/>
                 {/* the controler for control the STATE data */}
-                <div>Build Controls</div>
+                <BuildControls />
             </Aux>
         )
     }
