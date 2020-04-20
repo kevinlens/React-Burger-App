@@ -12,7 +12,12 @@ const buildControl = (props) => (
     not possible with <Aux> or hoc*/
     <div className={classes.BuildControl}>
         <div className={classes.Label}>{props.label}</div>
-        <button className={classes.Less} onClick={props.removeClicked} >Less</button>
+        <button 
+        className={classes.Less} 
+        onClick={props.removeClicked}
+        //disabled={false} or disabled={true}
+        disabled={props.disabled}
+        >Less</button>
         <button className={classes.More} onClick={props.addClicked}>More</button>
     </div>
 );

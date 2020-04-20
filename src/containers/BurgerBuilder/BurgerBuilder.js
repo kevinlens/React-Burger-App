@@ -103,6 +103,8 @@ class BurgerBuilder extends Component{
 
 
     render(){
+
+
         /*spread operator distributing data from 
         ingredients object from STATE*/
         const disabledInfo = {
@@ -131,6 +133,7 @@ class BurgerBuilder extends Component{
                 {/* the manipulator of the DOM for the burger picture itself */}
                 <Burger ingredients={this.state.ingredients}/>
                 {/* the controllers for adding more or less items to the burger */}
+                
                 <BuildControls 
                 ingredientAdded={this.addIngredientHandler}
                 ingredientRemoved={this.removeIngredientHandler}

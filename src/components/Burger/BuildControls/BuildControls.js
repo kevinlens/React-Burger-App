@@ -31,6 +31,15 @@ const buildControls = (props) => (
              by calling upon an annoymous function */
             addClicked={() => props.ingredientAdded(ctrl.type)}
             removeClicked={() => props.ingredientRemoved(ctrl.type)}
+            /*disabledInfo:{
+                salad:false,
+                bacon:false,
+                cheese:false,
+                meat:false
+            }*/
+            /* props.disabled = disabledInfo OBJECT passed in, [ctrl.type] is a 
+            e.g "salad",--->props.disabled[salad]------> get back "false"------>
+            disabled={false}*/
             disabled={props.disabled[ctrl.type]}
             />
             ))
