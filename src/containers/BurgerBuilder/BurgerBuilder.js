@@ -47,6 +47,14 @@ class BurgerBuilder extends Component{
             purchasing: true
         })
     }
+/*purchaseCancelHandler(){} is only triggered through an event, therefore
+  the this.setState() will not work*/
+    purchaseCancelHandler = () => {
+        this.setState({
+            purchasing: false
+        });
+    }
+
 
     //A Method to update on whether or not the cart functionality can work
     updatePurchaseState(ingredients){
@@ -169,11 +177,12 @@ class BurgerBuilder extends Component{
         }
 
 
+
         return(
             //Aux Wrapper
             <Aux>
 
-                <Modal show={this.state.purchasing}>
+                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
                   <OrderSummary ingredients={this.state.ingredients}/>
                 </Modal>    
 
