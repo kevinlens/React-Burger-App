@@ -9,6 +9,10 @@ import Burger from '../../components/Burger/Burger'
 //Importing STATELESS controls component from component file
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 
+import Modal from '../../components/UI/Modal/Modal'
+
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
+
 const INGREDIENT_PRICES = {
     salad: 0.5,
     cheese: 0.4,
@@ -160,6 +164,11 @@ class BurgerBuilder extends Component{
         return(
             //Aux Wrapper
             <Aux>
+
+                <Modal>
+                  <OrderSummary ingredients={this.state.ingredients}/>
+                </Modal>    
+
                 {/* the manipulator of the DOM for the burger picture itself */}
                 <Burger ingredients={this.state.ingredients}/>
                 {/* the controllers for adding more or less items to the burger */}
