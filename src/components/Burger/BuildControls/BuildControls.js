@@ -20,6 +20,9 @@ const buildControls = (props) => (
     we want to add a className to it which is 
     not possible with <Aux> or hoc*/
     <div className={classes.BuildControls}>
+    
+    <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
+        
      {/* {controls} and then mapping through it, for object in the controls
      array, print out a controller the 'more' or 'less' button  */}
         {controls
