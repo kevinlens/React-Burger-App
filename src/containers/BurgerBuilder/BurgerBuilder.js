@@ -27,10 +27,35 @@ class BurgerBuilder extends Component{
             cheese:0,
             meat:0 
         },
-        totalPrice:4
+        totalPrice:4,
+        purchasable: false
     }
 
+
+
 /*------------------------------------------------------------------ */
+
+
+    //A Method to update on whether or not the cart functionality can work
+    updatePurchaseState(ingredients){
+
+        //Making the object into an array e.g ['salad','bacon','cheese','meat']
+        const sum = Object.keys(ingredients)
+            .map(igKey =>{
+                //basically return the value of the property e.g  "salad" ---> 2
+                return ingredients[igKey]
+            })
+            //getting the sum of the returned valued from .map()
+            .reduce((sum,el) => {
+                return sum + el;
+            //value will be starting at 0    
+            },0);
+            this.setState({
+                //return true or false based on operation 
+                purchasable: sum > 0
+            })
+    }
+
     //A METHOD to add an item to the burger
     addIngredientHandler = (type) => {
         /*taking the old data of the ingredients on the burger
@@ -60,7 +85,9 @@ class BurgerBuilder extends Component{
             totalPrice: newPrice,
             ingredients:updatedIngredients
         });
-
+        /*Each time add or remove button is clicked, update the purchase button
+        by passing in the now update ingredient OBJECT*/
+        this.updatePurchaseState(updatedIngredients);
     }
 
      //A METHOD to remove an item to the burger
@@ -97,6 +124,9 @@ class BurgerBuilder extends Component{
             totalPrice: newPrice,
             ingredients:updatedIngredients
         });
+        /*Each time add or remove button is clicked, update the purchase button
+        by passing in the now update ingredient OBJECT*/
+        this.updatePurchaseState(updatedIngredients);
     }
 /*------------------------------------------------------------------ */
 
@@ -139,6 +169,7 @@ class BurgerBuilder extends Component{
                 ingredientRemoved={this.removeIngredientHandler}
                 // passing in the data of 'disabledInfo'
                 disabled={disabledInfo}
+                purchasable={this.state.purchasable}
                 price={this.state.totalPrice}
                 />
             </Aux>

@@ -23,7 +23,7 @@ const buildControls = (props) => (
     
     <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
         
-     {/* {controls} and then mapping through it, for object in the controls
+     {/* {controls} and then mapping through it, for every object in the controls
      array, print out a controller the 'more' or 'less' button  */}
         {controls
             .map(ctrl =>(
@@ -47,6 +47,12 @@ const buildControls = (props) => (
             />
             ))
         }
+
+        <button 
+        className={classes.OrderButton}
+        //If disabled is not false, which by default it is, then disable
+        disabled={!props.purchasable}
+        >ORDER NOW</button>
 
     </div>
 );
