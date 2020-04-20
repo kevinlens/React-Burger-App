@@ -10,9 +10,15 @@ import BurgerIngredient from './BurgerIngredient/BurgerIngredient'
 //STATELESS functional 'burger' component aka (The Burger Itself)
 const burger = (props) => {
     
-    /*turning the (STATE: ingredient OBJECT) into an ARRAY with
-    Object.key.
-    ---> ingredients: ["salad", "bacon", "cheese", "meat"] */
+    /*
+    NOTE: It is very important to know that you cannot use the 
+    .map() method loop through an OBJECT as it is only reserved for
+    arrays, that is why you have to use the Object.keys() to get an 
+    ARRAY created from the object.
+    Turning the (STATE: ingredient OBJECT) into an ARRAY with
+    Object.keys()
+    ---> ingredients: ["salad", "bacon", "cheese", "meat"] 
+    */
     let transformedIngredients = Object.keys(props.ingredients)
     /*for every item in "ingredients" igKey becomes that e.g 'salad'
     and that item STILL holds its value e.g salad: 1, meat: 2;
@@ -25,7 +31,7 @@ const burger = (props) => {
             /*In order to have a value you have to use a
             spread operator on it to create 2 undefined values which also
             gets rid of the array bracket by doing (...Array(2)):
-            undefined undefined
+            "undefined undefined"
             */
             /*Then to get them into an array that holds 2 undefined values
             surround it with array brackets with [...Array(2)]:

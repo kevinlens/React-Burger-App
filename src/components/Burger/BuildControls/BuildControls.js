@@ -6,6 +6,7 @@ import classes from './BuildControls.module.css';
 
 import BuildControl from './BuildControl/BuildControl';
 
+//An array with objects of the items for burger
 const controls = [
     {label: 'Salad', type:'salad'},
     {label: 'Bacon', type:'bacon'},
@@ -19,10 +20,19 @@ const buildControls = (props) => (
     we want to add a className to it which is 
     not possible with <Aux> or hoc*/
     <div className={classes.BuildControls}>
-
+     {/* {controls} and then mapping through it, for object in the controls
+     array, print out a controller the 'more' or 'less' button  */}
         {controls
             .map(ctrl =>(
-            <BuildControl key={ctrl.label} label={ctrl.label}/>
+            <BuildControl 
+            key={ctrl.label} 
+            label={ctrl.label}
+            /* whenever you want to pass an item through, you would do so
+             by calling upon an annoymous function */
+            addClicked={() => props.ingredientAdded(ctrl.type)}
+            removeClicked={() => props.ingredientRemoved(ctrl.type)}
+            disabled={props.disabled[ctrl.type]}
+            />
             ))
         }
 
