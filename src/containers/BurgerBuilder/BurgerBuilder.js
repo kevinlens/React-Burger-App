@@ -32,13 +32,21 @@ class BurgerBuilder extends Component{
             meat:0 
         },
         totalPrice:4,
-        purchasable: false
+        purchasable: false,
+        purchasing: false
     }
 
 
 
 /*------------------------------------------------------------------ */
 
+/*purchaseHandler(){} is only triggered through an event, therefore
+  the this.setState() will not work*/
+    purchaseHandler = () =>{
+        this.setState({
+            purchasing: true
+        })
+    }
 
     //A Method to update on whether or not the cart functionality can work
     updatePurchaseState(ingredients){
@@ -165,7 +173,7 @@ class BurgerBuilder extends Component{
             //Aux Wrapper
             <Aux>
 
-                <Modal>
+                <Modal show={this.state.purchasing}>
                   <OrderSummary ingredients={this.state.ingredients}/>
                 </Modal>    
 
@@ -180,6 +188,7 @@ class BurgerBuilder extends Component{
                 disabled={disabledInfo}
                 purchasable={this.state.purchasable}
                 price={this.state.totalPrice}
+                ordered={this.purchaseHandler}
                 />
             </Aux>
         )
