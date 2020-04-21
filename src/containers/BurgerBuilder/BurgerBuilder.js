@@ -9,8 +9,10 @@ import Burger from '../../components/Burger/Burger'
 //Importing STATELESS controls component from component file
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 
+//Importing STATELESS OrderSummaryOverlay component from component file
 import Modal from '../../components/UI/Modal/Modal'
 
+//Importing STATELESS OrderSummary component from component file
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 
 const INGREDIENT_PRICES = {
@@ -55,6 +57,9 @@ class BurgerBuilder extends Component{
         });
     }
 
+    purchaseContinueHandler = () =>{
+        alert('You continue!');
+    }
 
     //A Method to update on whether or not the cart functionality can work
     updatePurchaseState(ingredients){
@@ -182,14 +187,22 @@ class BurgerBuilder extends Component{
             //Aux Wrapper
             <Aux>
 
+                {/* Modal is going to be the Order Summary OVERLAY */}
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
-                  <OrderSummary ingredients={this.state.ingredients}/>
+                {/* the OrderSummary is going to be the OrderSummary data shown being displayed */}
+                  <OrderSummary 
+                  purchaseCancelled={this.purchaseCancelHandler}
+                  purchaseContinued={this.purchaseContinueHandler}
+                  ingredients={this.state.ingredients}
+                  />
+
                 </Modal>    
 
                 {/* the manipulator of the DOM for the burger picture itself */}
                 <Burger ingredients={this.state.ingredients}/>
-                {/* the controllers for adding more or less items to the burger */}
 
+
+                {/* the controllers for adding more or less items to the burger */}
                 <BuildControls 
                 ingredientAdded={this.addIngredientHandler}
                 ingredientRemoved={this.removeIngredientHandler}
@@ -199,6 +212,8 @@ class BurgerBuilder extends Component{
                 price={this.state.totalPrice}
                 ordered={this.purchaseHandler}
                 />
+
+
             </Aux>
         )
     }
