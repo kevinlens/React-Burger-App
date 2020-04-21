@@ -31,8 +31,8 @@ const orderSummary = (props) => {
 
             <p>Continue to Checkout?</p>
 
-            <button btnType="Danger" onClick={props.purchaseCancelled}>CANCEL</button>
-            <button btnType="Success" onClick={props.purchaseContinued}>CONTINUE</button>
+            <Button btnType="Danger" clicked={props.purchaseCancelled}>CANCEL</Button>
+            <Button btnType="Success" clicked={props.purchaseContinued}>CONTINUE</Button>
         </Aux>
     );
 
