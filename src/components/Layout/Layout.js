@@ -24,6 +24,7 @@ same name classes and its interferences with each other, as it has a
 scoping feature to it*/
 import classes from './Layout.module.css'
 
+import Toolbar from '../Navigation/Toolbar/Toolbar'
 
 /*Using normal function component because it wont be dealing
 with state*/
@@ -31,12 +32,9 @@ with state*/
 const layout = (props) => (
     //Aux Wrapper
     <Aux>
-        <div>
-            Toolbar,
-            SideDrawer,
-            Backdrop
-        </div>
+        <Toolbar />
         <main className={classes.Content}>
+    {/* {props.children} is going to reference the <BurgerBuilder /> element */}
             {props.children}
         </main>
     </Aux>
