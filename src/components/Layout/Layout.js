@@ -26,6 +26,8 @@ import classes from './Layout.module.css'
 
 import Toolbar from '../Navigation/Toolbar/Toolbar'
 
+import SideDrawer from '../Navigation/SideDrawer/SideDrawer'
+
 /*Using normal function component because it wont be dealing
 with state*/
 //STATELESS 'layout' component
@@ -33,8 +35,13 @@ const layout = (props) => (
     //Aux Wrapper
     <Aux>
         <Toolbar />
+
+        <SideDrawer />
+
+        {/* THIS IS GOING TO BE <BurgerBuilder /> */}
         <main className={classes.Content}>
-    {/* {props.children} is going to reference the <BurgerBuilder /> element */}
+    {/* {props.children} is going to reference the <BurgerBuilder /> element 
+    from App.js*/}
             {props.children}
         </main>
     </Aux>

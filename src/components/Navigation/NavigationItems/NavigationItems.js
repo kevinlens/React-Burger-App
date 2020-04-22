@@ -12,7 +12,7 @@ const navigationItems = () => (
         {/* the "Burger Build" and "Checkout" passed in will represent the 
         "{props.children}" of <NavigationItem></NavigationItem> */}
         <NavigationItem link="/" active>Burger Builder</NavigationItem>
-        <NavigationItem link="/" active >Checkout</NavigationItem>
+        <NavigationItem link="/" >Checkout</NavigationItem>
 
     </ul>
 );
