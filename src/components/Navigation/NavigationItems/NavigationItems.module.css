@@ -2,7 +2,19 @@
     margin:0;
     padding: 0;
     list-style: none;
+    /* display as flex and then to make it stack upon each other as a menu
+    for mobile first, do "flex-flow: column" */
     display: flex;
+    flex-flow: column;
     align-items: center;
     height: 100%;
+}
+
+@media (min-width: 500px) {
+    /* this is for screens bigger than 500 to have a the menu item align side 
+    by side with the already declared display: flex and then the now 
+    declared "flex-flow: row" */
+    .NavigationItems {
+        flex-flow: row;
+    }
 }

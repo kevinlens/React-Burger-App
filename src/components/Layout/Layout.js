@@ -13,7 +13,7 @@ sugar of the wrapper element with just <></> and be done. But all in all
 these all work EXACTLY the same. 
 */
 import Aux from '../../hoc/Auxiliary'
-import React from 'react'
+import React, {Component} from 'react'
 /*With the introduction of Create-React-App(CRA) 16.2(Version 2) 
 CSS Modules are now supported as a built-in-feature from the time
 you create the starting files. Meaning you no longer have to eject your
@@ -28,24 +28,39 @@ import Toolbar from '../Navigation/Toolbar/Toolbar'
 
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer'
 
-/*Using normal function component because it wont be dealing
-with state*/
-//STATELESS 'layout' component
-const layout = (props) => (
-    //Aux Wrapper
-    <Aux>
-        <Toolbar />
 
-        <SideDrawer />
+class Layout extends Component {
 
-        {/* THIS IS GOING TO BE <BurgerBuilder /> */}
-        <main className={classes.Content}>
-    {/* {props.children} is going to reference the <BurgerBuilder /> element 
-    from App.js*/}
-            {props.children}
-        </main>
-    </Aux>
-);
+    state = {
+        showSideDrawer: true
+    }
+
+    sideDrawerClosedHandler = () => {
+        this.setState({showSideDrawer: false});
+    }
+
+    render(){
+        return (
+        //Aux Wrapper
+        <Aux>
+            <Toolbar />
+
+            <SideDrawer 
+            open={this.state.showSideDrawer}
+            closed={this.sideDrawerClosedHandler}/>
+
+            {/* THIS IS GOING TO BE <BurgerBuilder /> */}
+            <main className={classes.Content}>
+            {/* {props.children} is going to reference the <BurgerBuilder /> element 
+            from App.js*/}
+                {this.props.children}
+            </main>
+        </Aux>
+        )
+    }
+}
+
+
 /* Basically components can only return a single element because 
 it is just a syntactic sugar for 
 React.createElement('p', null, 'Hello, world!'), which accepts only 
@@ -59,4 +74,4 @@ wrapper around them and it would still work*/
 
 
 //Exporting the the STATELESS component
-export default layout;
+export default Layout;
