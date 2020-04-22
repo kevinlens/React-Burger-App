@@ -39,11 +39,16 @@ class Layout extends Component {
         this.setState({showSideDrawer: false});
     }
 
+    sideDrawerOpenHandler = () =>{
+        this.setState({showSideDrawer: true})
+    }
+
     render(){
         return (
         //Aux Wrapper
         <Aux>
-            <Toolbar />
+            
+            <Toolbar open={this.sideDrawerOpenHandler} />
 
             <SideDrawer 
             open={this.state.showSideDrawer}

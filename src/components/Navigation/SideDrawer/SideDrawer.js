@@ -10,6 +10,7 @@ import Backdrop from '../../UI/Backdrop/Backdrop'
 
 import Aux from '../../../hoc/Auxiliary'
 
+//AKA the SideMenu
 const sideDrawer = (props) =>{
     
     let attachedClasses = [classes.SideDrawer, classes.Close]
@@ -21,8 +22,9 @@ const sideDrawer = (props) =>{
     return(
         <Aux>
             
-            {/* props data from Layout.js */}
+        {/* props data from Layout.js */}
         <Backdrop show={props.open} clicked={props.closed}/>
+
 
     {/* 
          here you want to customize the sideMenu so you wrap it in a div,
