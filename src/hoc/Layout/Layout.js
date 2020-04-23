@@ -12,7 +12,7 @@ However, with the intro of Babel 7 you can use the new syntactic
 sugar of the wrapper element with just <></> and be done. But all in all
 these all work EXACTLY the same. 
 */
-import Aux from '../../hoc/Auxiliary'
+import Aux from '../Auxiliary/Auxiliary'
 import React, {Component} from 'react'
 /*With the introduction of Create-React-App(CRA) 16.2(Version 2) 
 CSS Modules are now supported as a built-in-feature from the time
@@ -24,9 +24,9 @@ same name classes and its interferences with each other, as it has a
 scoping feature to it*/
 import classes from './Layout.module.css'
 
-import Toolbar from '../Navigation/Toolbar/Toolbar'
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
 
-import SideDrawer from '../Navigation/SideDrawer/SideDrawer'
+import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer'
 
 
 class Layout extends Component {

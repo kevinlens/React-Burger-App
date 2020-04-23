@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 //Importing in the LAYOUT Component from STATELESS component files
-import Layout from './components/Layout/Layout'
+import Layout from './hoc/Layout/Layout'
 //Importing in the BurgerBuilder Component from STATEFUL container files
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder'
 

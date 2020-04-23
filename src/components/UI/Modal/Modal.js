@@ -3,7 +3,7 @@ import React from 'react'
 //Import a LOCAL module css file
 import classes from './Modal.module.css'
 
-import Aux from '../../../hoc/Auxiliary'
+import Aux from '../../../hoc/Auxiliary/Auxiliary'
 
 //Importing STATELESS 'Backdrop' component from component file aka (BackgroundMenuCancel)
 import Backdrop from '../Backdrop/Backdrop';

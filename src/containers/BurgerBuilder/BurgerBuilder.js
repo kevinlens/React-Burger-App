@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 
 //Importing in the AUX wrapper from the CUSTOM-BUILT Aux Component
-import Aux from '../../hoc/Auxiliary'
+import Aux from '../../hoc/Auxiliary/Auxiliary'
 
 //Importing STATELESS burger component from component file
 import Burger from '../../components/Burger/Burger'

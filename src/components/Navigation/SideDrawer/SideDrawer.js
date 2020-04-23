@@ -8,7 +8,7 @@ import classes from './SideDrawer.module.css'
 
 import Backdrop from '../../UI/Backdrop/Backdrop'
 
-import Aux from '../../../hoc/Auxiliary'
+import Aux from '../../../hoc/Auxiliary/Auxiliary'
 
 //AKA the SideMenu
 const sideDrawer = (props) =>{
