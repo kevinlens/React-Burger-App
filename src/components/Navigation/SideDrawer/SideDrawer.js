@@ -42,7 +42,6 @@ const sideDrawer = (props) =>{
 
         </div>
 
-
         </Aux>
     );
 }
