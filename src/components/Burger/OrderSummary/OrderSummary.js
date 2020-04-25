@@ -38,5 +38,5 @@ const orderSummary = (props) => {
 
 
 };
-
+//exporting stateless component
 export default orderSummary;
