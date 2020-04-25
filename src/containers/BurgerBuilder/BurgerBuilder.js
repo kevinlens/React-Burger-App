@@ -15,6 +15,8 @@ import Modal from '../../components/UI/Modal/Modal'
 //Importing STATELESS OrderSummary component from component file
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 
+import Spinner from '../../components/UI/Spinner/Spinner'
+
 import axios from '../../axios-orders';
 
 const INGREDIENT_PRICES = {
@@ -37,7 +39,8 @@ class BurgerBuilder extends Component{
         },
         totalPrice:4,
         purchasable: false,
-        purchasing: false
+        purchasing: false,
+        loading:false
     }
 
 
@@ -60,6 +63,7 @@ class BurgerBuilder extends Component{
     }
 
     purchaseContinueHandler = () =>{
+        this.setState({loading: true});
         //alert('You continue!');
         const order = {
             ingredient: this.state.ingredients,
@@ -77,9 +81,9 @@ class BurgerBuilder extends Component{
         }
         axios.post('/orders.json', order)
             .then(response=>
-                console.log('response')
+                this.setState({loading: false, purchasing: false })
             )
-            .catch(error => console.log(error))
+            .catch(error => this.setState({loading: false, purchasing: false}))
     }
 
     //A Method to update on whether or not the cart functionality can work
@@ -203,6 +207,18 @@ class BurgerBuilder extends Component{
         }
 
 
+        let orderSummary =                
+        <OrderSummary 
+        purchaseCancelled={this.purchaseCancelHandler}
+        purchaseContinued={this.purchaseContinueHandler}
+        ingredients={this.state.ingredients}
+        price={this.state.totalPrice}
+        />;
+        
+        if(this.state.loading) {
+            orderSummary = <Spinner />
+        }
+
 
         return(
             //Aux Wrapper
@@ -210,14 +226,7 @@ class BurgerBuilder extends Component{
 
                 {/* Modal is going to be the Order Summary OVERLAY */}
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
-                {/* the OrderSummary is going to be the OrderSummary data shown being displayed */}
-                  <OrderSummary 
-                  purchaseCancelled={this.purchaseCancelHandler}
-                  purchaseContinued={this.purchaseContinueHandler}
-                  ingredients={this.state.ingredients}
-                  price={this.state.totalPrice}
-                  />
-
+                {orderSummary}
                 </Modal>    
 
                 {/* the manipulator of the DOM for the burger picture itself */}
