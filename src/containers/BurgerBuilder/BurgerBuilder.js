@@ -63,33 +63,38 @@ class BurgerBuilder extends Component{
 /*purchaseCancelHandler(){} is only triggered through an event, therefore
   the this.setState() will not work*/
     purchaseCancelHandler = () => {
+
         this.setState({
             purchasing: false
         });
     }
-
+/*--------------------------------------------------------------*/
     purchaseContinueHandler = () =>{
-        this.setState({loading: true});
-        //alert('You continue!');
-        const order = {
-            ingredient: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'Kevin Tran',
-                address: {
-                    street: 'Teststreet 1',
-                    zipCode: '23123',
-                    country: 'Germany'
-                },
-                email: 'test@test.com'
-            },
-            deliveryMethod: 'fastest'
-        }
-        axios.post('/orders.json', order)
-            .then(response=>
-                this.setState({loading: false, purchasing: false })
-            )
-            .catch(error => this.setState({loading: false, purchasing: false}))
+        // this.setState({loading: true});
+        // //alert('You continue!');
+        // const order = {
+        //     ingredient: this.state.ingredients,
+        //     price: this.state.totalPrice,
+        //     customer: {
+        //         name: 'Kevin Tran',
+        //         address: {
+        //             street: 'Teststreet 1',
+        //             zipCode: '23123',
+        //             country: 'Germany'
+        //         },
+        //         email: 'test@test.com'
+        //     },
+        //     deliveryMethod: 'fastest'
+        // }
+        // axios.post('/orders.json', order)
+        //     .then(response=>
+        //         this.setState({loading: false, purchasing: false })
+        //     )
+        //     .catch(error => this.setState({loading: false, purchasing: false}))
+    
+            //push a new page onto the stack of pages
+            this.props.history.push('/checkout');        
+
     }
 
     //A Method to update on whether or not the cart functionality can work
@@ -262,6 +267,7 @@ class BurgerBuilder extends Component{
                 </Modal>    
 
                 {burger}
+                
             </Aux>
         )
     }
