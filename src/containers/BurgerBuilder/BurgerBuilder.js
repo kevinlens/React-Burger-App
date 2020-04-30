@@ -70,28 +70,6 @@ class BurgerBuilder extends Component{
     }
 /*--------------------------------------------------------------*/
     purchaseContinueHandler = () =>{
-        // this.setState({loading: true});
-        // //alert('You continue!');
-        // const order = {
-        //     ingredient: this.state.ingredients,
-        //     price: this.state.totalPrice,
-        //     customer: {
-        //         name: 'Kevin Tran',
-        //         address: {
-        //             street: 'Teststreet 1',
-        //             zipCode: '23123',
-        //             country: 'Germany'
-        //         },
-        //         email: 'test@test.com'
-        //     },
-        //     deliveryMethod: 'fastest'
-        // }
-        // axios.post('/orders.json', order)
-        //     .then(response=>
-        //         this.setState({loading: false, purchasing: false })
-        //     )
-        //     .catch(error => this.setState({loading: false, purchasing: false}))
-    
 
         const queryParams = [];
         //loop through all the properties in the ingredients
@@ -105,7 +83,10 @@ to look for 'salad's value which is equal to '2'*/
                 // output: cheese=0
                 );
         }
-//join all the empty white spaces with &
+
+        queryParams.push('price='+ this.state.totalPrice);
+
+//join all the empty white spaces with '&'
         const queryString = queryParams.join('&');    
 
             //push a new page onto the stack of pages
