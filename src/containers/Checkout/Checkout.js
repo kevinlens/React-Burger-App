@@ -7,9 +7,9 @@ import ContactData from './ContactData/ContactData'
 class Checkout extends Component{
     state = {
         ingredients: null,
-        price: 0
+        totalPrice: 0
     }
-
+//this is setup as WillMount so that state is setup prior to passing it through the children(Elements and Components)
     componentWillMount(){
     // this.props.location.search = ?bacon=0&cheese=0&meat=1&salad=1 
     // URLSearchParams turns it into a query object
@@ -31,7 +31,7 @@ class Checkout extends Component{
             ingredients[param[0]] = +param[1]
             }
         }
-        this.setState({ingredients: ingredients});
+        this.setState({ingredients: ingredients, totalPrice: price});
         
     }
 
@@ -58,8 +58,8 @@ class Checkout extends Component{
                 path={this.props.match.url + '/contact-data'} 
                 // component={ContactData}
                 //By using render it will be easier to pass in props to the desired component
-                render={()=> (<ContactData ingredients={this.state.ingredients} price={this.state.totalPrice} />)}
-                />
+                render={(props)=> (<ContactData ingredients={this.state.ingredients} price={this.state.totalPrice} {...props}/>)}
+            />
             </div>
         )
     }

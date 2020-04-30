@@ -11,8 +11,8 @@ const navigationItems = () => (
 
         {/* the "Burger Build" and "Checkout" passed in will represent the 
         "{props.children}" of <NavigationItem></NavigationItem> */}
-        <NavigationItem link="/" active>Burger Builder</NavigationItem>
-        <NavigationItem link="/" >Checkout</NavigationItem>
+        <NavigationItem link="/" exact >Burger Builder</NavigationItem>
+        <NavigationItem link="/orders" >Orders</NavigationItem>
 
     </ul>
 );
