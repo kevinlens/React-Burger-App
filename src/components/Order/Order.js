@@ -5,7 +5,7 @@ import classes from './Order.module.css';
 const order = (props) => {
 
     const ingredients = []
-console.log(props.ingre)
+    
     for(let ingredientName in props.ingredients){
         ingredients.push(
             {
@@ -28,6 +28,7 @@ console.log(props.ingre)
     })
         return(
             <div className={classes.Order}>
+
                 <p>Ingredients: {ingredientOutput}</p>
                 <p>Price: <strong>USD {Number.parseFloat(props.price).toFixed(2)}</strong></p>
             </div>

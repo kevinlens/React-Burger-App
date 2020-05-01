@@ -13,12 +13,12 @@ class Orders extends Component {
         loading: true
     }
 
-    componentWillMount(){
+    componentDidMount(){
         //base url is already set to: https://burger-app-project-b3079.firebaseio.com/
-        axios.get('./orders.json')
+        axios.get('/orders.json')
             .then(res => {
                 const fetchedOrders = [];
-
+               
                 //the "data" is an object containing additional "property: {objects}" returned
                 for(let key in res.data){
                     fetchedOrders.push(   
@@ -30,13 +30,11 @@ class Orders extends Component {
                         ...res.data[key],
                         id:key
                         }
-
+                        
                     )
+                  
                 }
-                this.setState({
-                    loading: false,
-                    orders: fetchedOrders
-                })
+                this.setState({loading: false, orders: fetchedOrders})
             })
             .catch(err =>{
                 this.setState({loading: false})
