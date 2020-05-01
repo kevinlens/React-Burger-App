@@ -4,7 +4,7 @@ import Order from '../../components/Order/Order'
 
 import axios from '../../axios-orders'
 
-
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
 
 class Orders extends Component {
 
@@ -47,4 +47,4 @@ class Orders extends Component {
     }
 }
 
-export default Orders;
+export default withErrorHandler(Orders, axios);
