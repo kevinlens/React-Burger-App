@@ -19,13 +19,19 @@ class Orders extends Component {
             .then(res => {
                 const fetchedOrders = [];
 
-                //the "data" an object containing additional objects returned
+                //the "data" is an object containing additional "property: {objects}" returned
                 for(let key in res.data){
-                    fetchedOrders.push({
-                        //spread out the objects with specific data out of the main object
+                    fetchedOrders.push(   
+                        /*"key" serves as "property" used to reference its values(objects)
+                        ...res.data[property]------> ...{} spreading out object*/
+                        /*spread out the specific data from the object out of the main object
+                        and put it in your OWN object that will eventually make [{...},{...},{...}]*/
+                        {
                         ...res.data[key],
                         id:key
-                    })
+                        }
+
+                    )
                 }
                 this.setState({
                     orders: fetchedOrders,
@@ -40,8 +46,13 @@ class Orders extends Component {
     render() {
         return(
             <div>
-                <Order />
-                <Order />
+                {this.state.orders.map(order=>(
+                    <Order 
+                        key={order.id} 
+                        ingredients={order.ingredients} 
+                        price={order.price}
+                    />
+                ))}
             </div>
         );
     }
