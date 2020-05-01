@@ -13,7 +13,7 @@ class Orders extends Component {
         loading: true
     }
 
-    componentDidMount(){
+    componentWillMount(){
         //base url is already set to: https://burger-app-project-b3079.firebaseio.com/
         axios.get('./orders.json')
             .then(res => {
@@ -34,8 +34,8 @@ class Orders extends Component {
                     )
                 }
                 this.setState({
-                    orders: fetchedOrders,
-                    loading: false
+                    loading: false,
+                    orders: fetchedOrders
                 })
             })
             .catch(err =>{
@@ -46,13 +46,17 @@ class Orders extends Component {
     render() {
         return(
             <div>
+                
                 {this.state.orders.map(order=>(
                     <Order 
                         key={order.id} 
                         ingredients={order.ingredients} 
                         price={order.price}
+                        
                     />
+                   
                 ))}
+          
             </div>
         );
     }
