@@ -6,16 +6,43 @@ const input = (props) =>{
 
     let inputElement = null;
 
-    //props.inputType will throw an error because the statement below is case insensitive
-    switch( props.inputtype ){
+    switch( props.elementType ){
         case ('input'):
-            inputElement = <input className={classes.InputElement} {...props}/>
+            inputElement = <input
+                 className={classes.InputElement} 
+                 {...props.elementConfig} 
+                 value = {props.value}
+                 onChange={props.changed}
+                 />
             break;
         case ('textarea'):
-            inputElement = <textarea className={classes.InputElement} {...props}/>    
+            inputElement = <textarea 
+                 className={classes.InputElement} 
+                 {...props.elementConfig} 
+                 value = {props.value}
+                 onChange={props.changed}
+                 />    
             break;
+        case ('select'):
+            inputElement = (
+                <select
+                     className={classes.InputElement} 
+                     value = {props.value}
+                     onChange={props.changed}
+                     >  
+                     {props.elementConfig.options.map(option =>(
+                         <option key={option.value} value={option.value}>
+                             {option.displayValue}
+                         </option>
+                     ))}
+                </select>
+                );  
+                break;            
         default:
-            inputElement = <input className={classes.InputElement} {...props}/>    
+            inputElement = <input 
+                 className={classes.InputElement} 
+                 {...props.elementConfig} 
+                 value = {props.value}/>    
     }
 
     return(
