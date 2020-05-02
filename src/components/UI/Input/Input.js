@@ -1,15 +1,31 @@
 import React from 'react'
 
-
-
+import classes from './Input.module.css'
 
 const input = (props) =>{
+
+    let inputElement = null;
+
+    //props.inputType will throw an error because the statement below is case insensitive
+    switch( props.inputtype ){
+        case ('input'):
+            inputElement = <input className={classes.InputElement} {...props}/>
+            break;
+        case ('textarea'):
+            inputElement = <textarea className={classes.InputElement} {...props}/>    
+            break;
+        default:
+            inputElement = <input className={classes.InputElement} {...props}/>    
+    }
+
     return(
-        <div>
-            <label>{props.label}</label>
-            
+        <div className={classes.Input}>
+            <label className={classes.Label}>{props.label}</label>
+            {inputElement}
         </div>
     )
+
+
 }
 
 export default input;
