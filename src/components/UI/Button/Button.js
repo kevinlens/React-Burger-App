@@ -4,6 +4,7 @@ import classes from './Button.module.css'
 
 const button = (props) => (
     <button
+    disabled={props.disabled}
     //Should in the end, result in ---->className={classes.Button classes[success]}
     /* "classes.props.btnType" would not work as it would mean that
     props is a PROPERTY of classes. Props is not a property of classes.
