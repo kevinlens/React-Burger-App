@@ -42,13 +42,13 @@ class BurgerBuilder extends Component{
 //compoentDidMount is best for FETCHING data
     componentDidMount(){
         //make sure to add .json at the end
-        axios.get('https://burger-app-project-b3079.firebaseio.com/ingredients.json')
-            .then(response =>{
-                this.setState({ingredients: response.data});
-            })
-            .catch(error =>{
-                this.setState({error:true});
-            })
+        // axios.get('https://burger-app-project-b3079.firebaseio.com/ingredients.json')
+        //     .then(response =>{
+        //         this.setState({ingredients: response.data});
+        //     })
+        //     .catch(error =>{
+        //         this.setState({error:true});
+        //     })
     }
 
 /*------------------------------------------------------------------ */
