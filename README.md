@@ -1,3 +1,5 @@
+#A Yummy Burger App
+
 ## Purpose
 
 The purpose of this project is to help me understand and learn React from basic to advanced topics
