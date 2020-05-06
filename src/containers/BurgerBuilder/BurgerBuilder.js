@@ -30,8 +30,6 @@ import * as actionTypes from '../../store/action';
 class BurgerBuilder extends Component{
     //State aka burger DATA for manipulation
     state = {
-        totalPrice:4,
-        purchasable: false,
         purchasing: false,
         loading:false,
         error: false
@@ -108,10 +106,9 @@ to look for 'salad's value which is equal to '2'*/
                 return sum + el;
             //value will be starting at 0    
             },0);
-            this.setState({
-                //return true or false based on operation 
-                purchasable: sum > 0
-            })
+         //return true or false based on operation 
+         return sum > 0
+      
     }
 
 /*------------------------------------------------------------------ */
@@ -163,8 +160,8 @@ to look for 'salad's value which is equal to '2'*/
                 ingredientRemoved={this.props.onIngredientRemoved}
                 // passing in the data of 'disabledInfo'
                 disabled={disabledInfo}
-                purchasable={this.state.purchasable}
-                price={this.state.totalPrice}
+                purchasable={this.updatePurchaseState(this.props.ings)}
+                price={this.props.price}
                 ordered={this.purchaseHandler}
                 />
             </Aux>
@@ -174,7 +171,7 @@ to look for 'salad's value which is equal to '2'*/
             purchaseCancelled={this.purchaseCancelHandler}
             purchaseContinued={this.purchaseContinueHandler}
             ingredients={this.props.ings}
-            price={this.state.totalPrice}
+            price={this.props.price}
             />;
         }
         if(this.state.loading) {
@@ -200,7 +197,8 @@ to look for 'salad's value which is equal to '2'*/
 
 const mapStateToProps = state =>{
     return{
-        ings: state.ingredients
+        ings: state.ingredients,
+        price: state.totalPrice
     };
 }
 
