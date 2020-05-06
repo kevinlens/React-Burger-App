@@ -66,29 +66,7 @@ class BurgerBuilder extends Component{
 /*--------------------------------------------------------------*/
     purchaseContinueHandler = () =>{
 
-        const queryParams = [];
-        //loop through all the properties in the ingredients
-        for(let i in this.state.ingredients){
-/*'i' is 'salad' so if you put in this.state.ingredients[salad], its going
-to look for 'salad's value which is equal to '2'*/
-            //push each of the ingredient into the queryParams ARRAY
-            queryParams.push(
-//encondeURIComponent makes it so that the code can be used in the url, usually relevent for whites spaces
-                encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i])
-                // output: cheese=0
-                );
-        }
-
-        queryParams.push('price='+ this.state.totalPrice);
-
-//join all the empty white spaces with '&'
-        const queryString = queryParams.join('&');    
-
-            //push a new page onto the stack of pages
-            this.props.history.push({
-                pathname: '/checkout',
-                search:'?'+queryString
-            });        
+        this.props.history.push('/checkout');
 
     }
 
