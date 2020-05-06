@@ -1,4 +1,4 @@
-#A Yummy Burger App
+# A Yummy Burger App
 
 ## Purpose
 
