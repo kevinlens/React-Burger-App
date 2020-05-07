@@ -23,7 +23,7 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
 
 
 import {connect} from 'react-redux';
-import * as actionTypes from '../../store/action';
+import * as burgerBuilderActions from '../../store/actions/index'
 
 
 //STATEFUL class component aka(The Entire Burger Application)
@@ -37,13 +37,13 @@ class BurgerBuilder extends Component{
 //compoentDidMount is best for FETCHING data
     componentDidMount(){
         //make sure to add .json at the end
-        // axios.get('https://burger-app-project-b3079.firebaseio.com/ingredients.json')
-        //     .then(response =>{
-        //         this.setState({ingredients: response.data});
-        //     })
-        //     .catch(error =>{
-        //         this.setState({error:true});
-        //     })
+        axios.get('https://burger-app-project-b3079.firebaseio.com/ingredients.json')
+            .then(response =>{
+                this.setState({ingredients: response.data});
+            })
+            .catch(error =>{
+                this.setState({error:true});
+            })
     }
 
 /*------------------------------------------------------------------ */
@@ -182,11 +182,16 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: (ingName) => dispatch({type: actionTypes.ADD_INGREDIENT, ingredientName: ingName}),
-        onIngredientRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_INGREDIENT, ingredientName: ingName}),
+        onIngredientAdded: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
+        onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName)),
     }
 }
 
 
 //Exporting the the component
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));
+
+
+
+
+
