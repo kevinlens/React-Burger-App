@@ -10,7 +10,11 @@ import axios from '../../../axios-orders';
 
 import Input from '../../../components/UI/Input/Input'
 
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler'
+
 import {connect} from 'react-redux';
+
+import * as actions from '../../../store/actions/index';
 
 class ContactData extends Component {
     state = {
@@ -92,14 +96,11 @@ class ContactData extends Component {
                 valid: true
             }
         },
-        formisValid: false,
-        loading:false
+        formisValid: false
     }
 
     orderHandler = (event) => {
         event.preventDefault();
-
-        this.setState({loading: true});
 
         const formData = {};
 
@@ -117,6 +118,8 @@ class ContactData extends Component {
             price: this.props.price,
             orderData: formData
         }
+
+        this.props.onOrderBurger(order);
     
     }
 
@@ -206,7 +209,7 @@ class ContactData extends Component {
         </form>
                 );
 
-        if(this.state.loading){
+        if(this.props.loading){
             form = <Spinner />
         }
 
@@ -223,8 +226,15 @@ class ContactData extends Component {
 const mapStateToProps = state => {
     return {
         ings: state.ingredients,
-        price: state.total
+        price: state.total,
+        loading: state.loading
     }
 }
 
-export default connect(mapStateToProps)(ContactData);
+const mapDispatchToProps = dispatch => {
+    return {
+        onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData))
+    }     
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(withErrorHandler((ContactData,axios)));
