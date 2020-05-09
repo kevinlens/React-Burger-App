@@ -13,6 +13,7 @@ const navigationItems = () => (
         "{props.children}" of <NavigationItem></NavigationItem> */}
         <NavigationItem link="/" exact >Burger Builder</NavigationItem>
         <NavigationItem link="/orders" >Orders</NavigationItem>
+        <NavigationItem link="/auth" >Authenticate</NavigationItem>
 
     </ul>
 );
