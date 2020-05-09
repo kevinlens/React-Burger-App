@@ -73,6 +73,9 @@ export const fetchOrdersStart = () => {
 
 export const fetchOrders = () => {
     return dispatch => {
+
+        dispatch(fetchOrdersStart())
+        
                 //base url is already set to: https://burger-app-project-b3079.firebaseio.com/
                 axios.get('/orders.json')
                 .then(res => {
