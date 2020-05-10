@@ -20,7 +20,6 @@ props, and if they are not the same, return true to update*/
     }
 
 
-
     render(){
         return(
             <Aux>

@@ -20,17 +20,15 @@ const purchaseBurgerStart = (state, action) => {
     return updateObject(state, {loading: true})
 }
 
-const purchaseBurgerSuccess = (state = initialState, action) => {
+const purchaseBurgerSuccess = (state, action) => {
     
     const newOrder = updateObject(action.orderData, {id: action.orderID})
 
-     return updateObject(state,{
-         ...state,
-         loading: false,
-         purchased: true,
-         //concat is like .push() into the array
-         orders: state.orders.concat(newOrder)
-     })
+    return updateObject( state, {
+        loading: false,
+        purchased: true,
+        orders: state.orders.concat( newOrder )
+    } );
 
 }
 
@@ -43,11 +41,10 @@ const fetchOrdersStart = (state, action) => {
 }
 
 const fetchOrdersSuccess = (state, action) => {
-        return(state,{
-            ...state,
-            orders: action.orders,
-            loading: false
-        })
+    return updateObject( state, {
+        orders: action.orders,
+        loading: false
+    } );
 }
 
 const fetchOrdersFail = (state, action) => {

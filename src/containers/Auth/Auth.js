@@ -122,7 +122,7 @@ class Auth extends Component {
             form = <Spinner />
         }
 
-        const errorMessage = null;
+        let errorMessage = null;
 
         if(this.props.error) {
             errorMessage = (

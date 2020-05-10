@@ -7,7 +7,7 @@ import Aux from '../Auxiliary/Auxiliary'
 
 /*this is the passed in arguments from BurgerBuilder.js that exported
 at the very bottom*/
-const withErorrHandler = (WrappedComponent, axios) =>{
+const withErrorHandler = (WrappedComponent, axios) =>{
 
 //since you never use the class, you will return it as an anonymous class
     return class extends Component {
@@ -59,4 +59,4 @@ const withErorrHandler = (WrappedComponent, axios) =>{
 }
 
 
-export default withErorrHandler;
+export default withErrorHandler;
