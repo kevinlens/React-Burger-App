@@ -28,6 +28,7 @@ import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
 
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer'
 
+import {connect} from 'react-redux';
 
 class Layout extends Component {
 
@@ -48,9 +49,12 @@ class Layout extends Component {
         //Aux Wrapper
         <Aux>
             
-            <Toolbar open={this.sideDrawerOpenHandler} />
+            <Toolbar
+            isAuth={this.props.isAuthenticated}
+            open={this.sideDrawerOpenHandler} />
 
             <SideDrawer 
+            isAuth={this.props.isAuthenticated}
             open={this.state.showSideDrawer}
             closed={this.sideDrawerClosedHandler}/>
 
@@ -75,8 +79,12 @@ wrapper around them and it would still work*/
 
 
 
-
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null
+    }
+}
 
 
 //Exporting the the STATELESS component
-export default Layout;
+export default connect(mapStateToProps)(Layout);

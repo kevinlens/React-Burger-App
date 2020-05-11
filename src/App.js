@@ -12,6 +12,8 @@ import Order from './containers/Orders/Orders'
 
 import Auth from './containers/Auth/Auth'
 
+import Logout from './containers/Auth/Logout/Logout'
+
 /*Using a class based component because it will be dealing with
 stateful component*/
 /*STATEFUL 'App' class component, which always has a capital case
@@ -27,6 +29,7 @@ class App extends Component {
           <Route path="/checkout" component={Checkout} />
           <Route path="/orders" component={Order} />
           <Route path="/auth" component={Auth} />
+          <Route path="/logout" component={Logout} />
           <Route path="/" exact component={BurgerBuilder} />
         </Switch>
         </Layout>
