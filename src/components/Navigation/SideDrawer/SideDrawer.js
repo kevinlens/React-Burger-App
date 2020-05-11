@@ -30,7 +30,7 @@ const sideDrawer = (props) =>{
          here you want to customize the sideMenu so you wrap it in a div,
          however you cant have the <Backdrop /> be a part of it so you 
          will need an <Aux> wrapper with <Backdrop /> all on its own   */}
-        <div className={attachedClasses.join(' ')}>
+        <div className={attachedClasses.join(' ')} onClick={props.closed}>
         
         <div className={classes.Logo}>
             <Logo />
