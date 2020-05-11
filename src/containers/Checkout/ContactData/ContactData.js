@@ -16,7 +16,7 @@ import {connect} from 'react-redux';
 
 import * as actions from '../../../store/actions/index';
 
-import {updateObject} from '../../../shared/utility';
+import {updateObject, checkValidity} from '../../../shared/utility';
 
 class ContactData extends Component {
     state = {
@@ -159,7 +159,7 @@ class ContactData extends Component {
 
         const updatedFormElement = updateObject(this.state.orderForm[inputIdentifier],{
             value: event.target.value,
-            valid: this.checkValidity(event.target.value, this.state.orderForm[inputIdentifier].validation),
+            valid: checkValidity(event.target.value, this.state.orderForm[inputIdentifier].validation),
             touched: true
         })
 
