@@ -53,7 +53,7 @@ const buildControls = (props) => (
         //If disabled is not false, which by default it is, then disable
         disabled={!props.purchasable}
         onClick={props.ordered}
-        >ORDER NOW</button>
+        >{props.isAuth ? 'ORDER NOW' : 'SIGN UP TO ORDER'}</button>
 
     </div>
 );

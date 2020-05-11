@@ -41,9 +41,15 @@ class BurgerBuilder extends Component{
 /*purchaseHandler(){} is only triggered through an event, therefore
   the this.setState() will not work*/
     purchaseHandler = () =>{
+    if(this.props.isAuthenticated) {
+
         this.setState({
             purchasing: true
         })
+
+        }else{
+            this.props.history.push('/auth');
+        }
     }
 /*purchaseCancelHandler(){} is only triggered through an event, therefore
   the this.setState() will not work*/
@@ -123,24 +129,24 @@ class BurgerBuilder extends Component{
     
     
                 {/* the controllers for adding more or less items to the burger  */}
-                <BuildControls 
+            <BuildControls 
                 ingredientAdded={this.props.onIngredientAdded}
                 ingredientRemoved={this.props.onIngredientRemoved}
                 // passing in the data of 'disabledInfo'
                 disabled={disabledInfo}
                 purchasable={this.updatePurchaseState(this.props.ings)}
                 price={this.props.price}
-                ordered={this.purchaseHandler}
-                />
+                isAuth={this.props.isAuthenticated}
+                ordered={this.purchaseHandler}/>
+
             </Aux>
             )
 
             orderSummary = <OrderSummary 
-            purchaseCancelled={this.purchaseCancelHandler}
-            purchaseContinued={this.purchaseContinueHandler}
-            ingredients={this.props.ings}
-            price={this.props.price}
-            />;
+                purchaseCancelled={this.purchaseCancelHandler}
+                purchaseContinued={this.purchaseContinueHandler}
+                ingredients={this.props.ings}
+                price={this.props.price} />;
         }
 
 
@@ -165,7 +171,8 @@ const mapStateToProps = state =>{
     return{
         ings: state.burgerBuilder.ingredients,
         price: state.burgerBuilder.totalPrice,
-        error: state.burgerBuilder.error
+        error: state.burgerBuilder.error,
+        isAuthenticated: state.auth.token !== null
     };
 }
 
