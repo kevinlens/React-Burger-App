@@ -1,19 +1,16 @@
-
-//these are basically function names 
 export {
     addIngredient,
     removeIngredient,
-    initIngredients,
+    initIngredients
 } from './burgerBuilder';
-
 export {
     purchaseBurger,
     purchaseInit,
     fetchOrders
-} from './order'
-
+} from './order';
 export {
     auth,
     logout,
-    setAuthRedirectPath
-} from './auth'
+    setAuthRedirectPath,
+    authCheckState
+} from './auth';
