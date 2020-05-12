@@ -26,7 +26,7 @@ import * as actions from '../../store/actions/index'
 
 
 //STATEFUL class component aka(The Entire Burger Application)
-class BurgerBuilder extends Component{
+export class BurgerBuilder extends Component{
     //State aka burger DATA for manipulation
     state = {
         purchasing: false
