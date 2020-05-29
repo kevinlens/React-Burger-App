@@ -9,4 +9,9 @@ The purpose of this project is to help me understand and learn React from basic 
 # Tools and Methods Used
 
 * Routing 
-* Authentication 
+* Authentication/Authorization
+* Redux
+* Validation
+* Form Submission
+* Asynchronous 
+* Ect
