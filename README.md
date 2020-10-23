@@ -2,7 +2,9 @@
 
 ## Purpose
 
-The purpose of this project is to help me understand and learn React from basic to advanced topics
+Designed for consumer to be able customize their own desired burger for order after the consumer has registered an account. Consumer will be shown the final price and asked for additional information before the order is placed.
+
+- Git clone the project, npm install, npm start, and go to client in terminal and npm start
 
 *Please note that this project changed a lot throughout the entire course and some of the documentation may be off.
 
